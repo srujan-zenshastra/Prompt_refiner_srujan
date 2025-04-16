@@ -5,18 +5,14 @@ import asyncio
 from typing import List, Dict, Any
 from anthropic import AsyncAnthropic
 import google.generativeai as genai
-from dotenv import load_dotenv
 
 # Assuming these are defined elsewhere in your project
 from models import LLMProvider, PromptVariation
 
-# Load environment variables
-load_dotenv()
-
-# API Keys
-GEMINI_API_KEY = "AIzaSyCNEWH98mW_gTa7N1mfz8uIZezuQdpvgkg"  # Hardcoded for now; consider moving to .env
-TOGETHER_API_KEY = os.getenv("TOGETHER_API_KEY")
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+# API Keys (hardcoded)
+GEMINI_API_KEY = "AIzaSyCNEWH98mW_gTa7N1mfz8uIZezuQdpvgkg"
+TOGETHER_API_KEY = "26fbfd33371ab164d5bcf7eedf3ae35da973092d0e97da99ade6cb6e3935e045"
+ANTHROPIC_API_KEY = "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"
 
 # Configure Google API
 genai.configure(api_key=GEMINI_API_KEY)
