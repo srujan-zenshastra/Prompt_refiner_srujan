@@ -1,17 +1,12 @@
 import asyncio
 from typing import List, Dict, Any
-from dotenv import load_dotenv
 from anthropic import AsyncAnthropic  # Use Anthropic SDK
-import os
 
 # Absolute imports
 from models import PromptVariation
 
-# Load environment variables
-load_dotenv()
-
-# Initialize Anthropic client
-client = AsyncAnthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+# Initialize Anthropic client with hardcoded API key
+client = AsyncAnthropic(api_key="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")
 
 class ScoringService:
     @staticmethod
