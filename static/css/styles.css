@@ -1,76 +1,169 @@
-/* Custom styles beyond Tailwind */
+/* Ultra-modern UI styles with advanced animations and effects */
 
-/* Fix for Textarea styling */
-textarea {
-    resize: vertical;
-    min-height: 100px;
+/* Base variables */
+:root {
+    --primary: #6b21a8; /* Deep purple for a futuristic vibe */
+    --primary-dark: #4c1d95;
+    --secondary: #a855f7; /* Vibrant purple accent */
+    --success: #10b981;
+    --danger: #ef4444;
+    --background: #0f172a; /* Dark slate for modern contrast */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
-/* Custom scrollbar */
+/* Global styles */
+body {
+    background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #e2e8f0;
+    overflow-x: hidden;
+}
+
+/* Futuristic scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
+    background: var(--glass-bg);
+    border-radius: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    border-radius: 12px;
+    box-shadow: var(--glow);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #6366f1;
+    background: linear-gradient(180deg, var(--primary-dark), var(--secondary));
 }
 
-/* Card hover effects */
-.variation-card {
-    transition: transform 0.2s, box-shadow 0.2s;
+/* Enhanced textarea and input styling */
+textarea, input, select {
+    resize: vertical;
+    min-height: 80px;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.25, 1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    color: #e2e8f0;
+    padding: 12px;
 }
 
-.variation-card:hover {
+textarea:focus, input:focus, select:focus {
+    border-color: var(--secondary);
+    box-shadow: var(--glow), 0 0 0 4px rgba(139, 92, 246, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modern glassmorphism card */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.25, 1);
+    box-shadow: var(--glow);
+}
+
+.glass-panel:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(139, 92, 246, 0.2);
+}
+
+/* Advanced button styles */
+button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.25, 1);
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    color: white;
+    font-weight: 500;
+    box-shadow: var(--glow);
+}
+
+button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
+    box-shadow: 0 8px 16px rgba(139, 92, 246, 0.4);
 }
 
-/* Pulse animation for processing */
-@keyframes pulse {
+button:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+button:active:after {
+    width: 300%;
+    height: 300%;
+}
+
+/* Neon glow animation */
+@keyframes neon-glow {
     0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+        box-shadow: 0 0 10px rgba(139, 92, 246, 0.3), 0 0 20px rgba(139, 92, 246, 0.2);
     }
-    
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+    50% {
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 30px rgba(139, 92, 246, 0.3);
     }
-    
     100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+        box-shadow: 0 0 10px rgba(139, 92, 246, 0.3), 0 0 20px rgba(139, 92, 246, 0.2);
     }
 }
 
-.pulse {
-    animation: pulse 2s infinite;
+.neon-glow {
+    animation: neon-glow 2s ease-in-out infinite;
 }
 
-/* Toast notification */
+/* Advanced loading animation */
+@keyframes aurora-spin {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 400% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.loading-gradient {
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary-dark), var(--primary));
+    background-size: 400%;
+    animation: aurora-spin 3s linear infinite;
+    border-radius: 50%;
+}
+
+/* Modern toast notification */
 .toast {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 12px 20px;
-    background-color: #4c1d95;
-    color: white;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transform: translateY(100px);
+    bottom: 32px;
+    right: 32px;
+    padding: 16px 24px;
+    background: var(--glass-bg);
+    color: #e2e8f0;
+    border-radius: 16px;
+    box-shadow: var(--glow);
+    transform: translateY(120px);
     opacity: 0;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.25, 1);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
 .toast.show {
@@ -78,10 +171,94 @@ textarea {
     opacity: 1;
 }
 
-/* Responsiveness fixes */
+/* Enhanced chart styling */
+canvas {
+    border-radius: 16px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.4s ease;
+}
+
+canvas:hover {
+    box-shadow: 0 12px 24px rgba(139, 92, 246, 0.2);
+}
+
+/* Custom checkbox design */
+.custom-checkbox {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(139, 92, 246, 0.4);
+    border-radius: 8px;
+    background: var(--glass-bg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.custom-checkbox:checked {
+    background: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.custom-checkbox:checked::after {
+    content: '✓';
+    display: block;
+    color: white;
+    text-align: center;
+    line-height: 24px;
+    font-size: 16px;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
     .container {
-        padding-left: 12px;
-        padding-right: 12px;
+        padding: 16px;
     }
+    
+    .glass-panel {
+        margin-bottom: 16px;
+    }
+    
+    .toast {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        text-align: center;
+    }
+}
+
+/* Additional effects for variation cards */
+.variation-card {
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.25, 1);
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 16px;
+}
+
+.variation-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(139, 92, 246, 0.2);
+    border-color: var(--secondary);
+}
+
+/* Header animation */
+@keyframes text-shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.text-shimmer {
+    background: linear-gradient(90deg, #a855f7, #6b21a8, #a855f7);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: text-shimmer 4s linear infinite;
 }
